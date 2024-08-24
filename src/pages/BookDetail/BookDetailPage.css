@@ -1,0 +1,48 @@
+.list-books {
+  position: relative;
+}
+
+.book-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #2e7c31;
+  text-decoration: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 10px 15px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.back-link:hover {
+  background-color: #2e7c31;
+  color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+.book-title-detail {
+  text-align: center;
+  font-size: 2em;
+  margin: 0 auto;
+  padding: 20px ;
+  font-weight: bold;
+}
