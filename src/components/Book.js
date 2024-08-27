@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function Book({ book, onUpdateBookShelf }) {
   const handleChange = (event) => {
@@ -31,5 +32,18 @@ function Book({ book, onUpdateBookShelf }) {
     </li>
   );
 }
+
+Book.propTypes = {
+  book: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    authors: PropTypes.arrayOf(PropTypes.string),
+    imageLinks: PropTypes.shape({
+      thumbnail: PropTypes.string
+    }),
+    shelf: PropTypes.string
+  }).isRequired,
+  onUpdateBookShelf: PropTypes.func.isRequired
+};
 
 export default Book;

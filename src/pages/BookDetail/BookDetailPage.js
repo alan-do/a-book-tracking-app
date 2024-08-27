@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import '../BookDetail/BookDetailPage.css';
 
 function BookDetailPage({ books }) {
@@ -31,5 +32,22 @@ function BookDetailPage({ books }) {
     </div>
   );
 }
+
+BookDetailPage.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string,
+      authors: PropTypes.arrayOf(PropTypes.string),
+      publisher: PropTypes.string,
+      publishedDate: PropTypes.string,
+      pageCount: PropTypes.number,
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string
+      })
+    })
+  ).isRequired
+};
 
 export default BookDetailPage;

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 function BookShelf({ title, books, onUpdateBookShelf }) {
   return (
@@ -27,12 +28,12 @@ function BookShelf({ title, books, onUpdateBookShelf }) {
                       value={book.shelf}
                     >
                       <option value="move" disabled>
-                        Di chuyển đến...
+                        Move to...
                       </option>
-                      <option value="currentlyReading">Đang đọc</option>
-                      <option value="wantToRead">Muốn đọc</option>
-                      <option value="read">Đã đọc</option>
-                      <option value="none">Không có</option>
+                      <option value="currentlyReading">Currently Reading</option>
+                      <option value="wantToRead">Want to Read</option>
+                      <option value="read">Read</option>
+                      <option value="none">None</option>
                     </select>
                   </div>
                 </div>
@@ -48,5 +49,21 @@ function BookShelf({ title, books, onUpdateBookShelf }) {
     </div>
   );
 }
+
+BookShelf.propTypes = {
+  title: PropTypes.string.isRequired,
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      authors: PropTypes.arrayOf(PropTypes.string).isRequired,
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string.isRequired
+      }).isRequired,
+      shelf: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  onUpdateBookShelf: PropTypes.func.isRequired
+};
 
 export default BookShelf;

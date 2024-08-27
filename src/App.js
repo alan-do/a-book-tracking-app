@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as BooksAPI from './BooksAPI';
 import MainPage from './pages/MainPage';
 import SearchPage from './pages/SearchPage';
@@ -35,5 +36,20 @@ function App() {
     </div>
   );
 }
+
+App.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      authors: PropTypes.arrayOf(PropTypes.string),
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string
+      }),
+      shelf: PropTypes.string.isRequired
+    })
+  ),
+  updateBookShelf: PropTypes.func
+};
 
 export default App;

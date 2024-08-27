@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import BookShelf from '../components/BookShelf';
 
 function MainPage({ books, onUpdateBookShelf }) {
@@ -31,5 +32,20 @@ function MainPage({ books, onUpdateBookShelf }) {
     </div>
   );
 }
+
+MainPage.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      authors: PropTypes.arrayOf(PropTypes.string),
+      imageLinks: PropTypes.shape({
+        thumbnail: PropTypes.string
+      }),
+      shelf: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  onUpdateBookShelf: PropTypes.func.isRequired
+};
 
 export default MainPage;
